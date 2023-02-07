@@ -130,12 +130,12 @@ def submitClusterJob(cv_train_path,cv_test_path,experiment_path,scale_data,imput
     job_name = experiment_path+'/jobs/P2_'+job_ref+'_run.sh'
     sh_file = open(job_name,'w')
     sh_file.write('#!/bin/bash\n')
-    sh_file.write('#BSUB -q '+queue+'\n')
-    sh_file.write('#BSUB -J '+job_ref+'\n')
-    sh_file.write('#BSUB -R "rusage[mem='+str(reserved_memory)+'G]"'+'\n')
-    sh_file.write('#BSUB -M '+str(maximum_memory)+'GB'+'\n')
-    sh_file.write('#BSUB -o ' + experiment_path+'/logs/P2_'+job_ref+'.o\n')
-    sh_file.write('#BSUB -e ' + experiment_path+'/logs/P2_'+job_ref+'.e\n')
+    sh_file.write('#SBATCH -p '+queue+'\n')
+    sh_file.write('#SBATCH --job-name='+job_ref+'\n')
+    sh_file.write('#SBATCH --mem='+str(reserved_memory)+'G'+'\n')
+    # sh_file.write('#BSUB -M '+str(maximum_memory)+'GB'+'\n')
+    sh_file.write('#SBATCH -o ' + experiment_path+'/logs/P2_'+job_ref+'.o\n')
+    sh_file.write('#SBATCH -e ' + experiment_path+'/logs/P2_'+job_ref+'.e\n')
 
     this_file_path = os.path.dirname(os.path.realpath(__file__))
     sh_file.write('python '+this_file_path+'/DataPreprocessingJob.py '+cv_train_path+" "+cv_test_path+" "+experiment_path+" "+scale_data+

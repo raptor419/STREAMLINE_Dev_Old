@@ -149,12 +149,12 @@ def submitClusterJob(full_path,plot_ROC,plot_PRC,plot_FI_box,class_label,instanc
     job_name = experiment_path + '/jobs/P6_' + job_ref + '_run.sh'
     sh_file = open(job_name,'w')
     sh_file.write('#!/bin/bash\n')
-    sh_file.write('#BSUB -q '+queue+'\n')
-    sh_file.write('#BSUB -J '+job_ref+'\n')
-    sh_file.write('#BSUB -R "rusage[mem='+str(reserved_memory)+'G]"'+'\n')
-    sh_file.write('#BSUB -M '+str(maximum_memory)+'GB'+'\n')
-    sh_file.write('#BSUB -o ' + experiment_path+'/logs/P6_'+job_ref+'.o\n')
-    sh_file.write('#BSUB -e ' + experiment_path+'/logs/P6_'+job_ref+'.e\n')
+    sh_file.write('#SBATCH -p '+queue+'\n')
+    sh_file.write('#SBATCH --job-name='+job_ref+'\n')
+    sh_file.write('#SBATCH --mem='+str(reserved_memory)+'G'+'\n')
+    # sh_file.write('#BSUB -M '+str(maximum_memory)+'GB'+'\n')
+    sh_file.write('#SBATCH -o ' + experiment_path+'/logs/P6_'+job_ref+'.o\n')
+    sh_file.write('#SBATCH -e ' + experiment_path+'/logs/P6_'+job_ref+'.e\n')
 
     this_file_path = os.path.dirname(os.path.realpath(__file__))
     sh_file.write('python '+this_file_path+'/StatsJob.py '+full_path+" "+plot_ROC+" "+plot_PRC+" "+plot_FI_box+" "+class_label+" "+instance_label+" "+str(cv_partitions)+" "+scale_data+" "+str(plot_metric_boxplots)+" "+str(primary_metric)+" "+str(top_model_features)+" "+str(sig_cutoff)+" "+str(metric_weight)+" "+str(jupyterRun)+'\n')

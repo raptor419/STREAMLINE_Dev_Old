@@ -167,12 +167,12 @@ def submitClusterJob(dataset_path,experiment_path,cv_partitions,partition_method
     job_name = experiment_path+'/jobs/P1_'+job_ref+'_run.sh'
     sh_file = open(job_name,'w')
     sh_file.write('#!/bin/bash\n')
-    sh_file.write('#BSUB -q '+queue+'\n')
-    sh_file.write('#BSUB -J '+job_ref+'\n')
-    sh_file.write('#BSUB -R "rusage[mem='+str(reserved_memory)+'G]"'+'\n')
-    sh_file.write('#BSUB -M '+str(maximum_memory)+'GB'+'\n')
-    sh_file.write('#BSUB -o ' + experiment_path+'/logs/P1_'+job_ref+'.o\n')
-    sh_file.write('#BSUB -e ' + experiment_path+'/logs/P1_'+job_ref+'.e\n')
+    sh_file.write('#SBATCH -p '+queue+'\n')
+    sh_file.write('#SBATCH --job-name='+job_ref+'\n')
+    sh_file.write('#SBATCH --mem='+str(reserved_memory)+'G'+'\n')
+    # sh_file.write('#BSUB -M '+str(maximum_memory)+'GB'+'\n')
+    sh_file.write('#SBATCH -o ' + experiment_path+'/logs/P1_'+job_ref+'.o\n')
+    sh_file.write('#SBATCH -e ' + experiment_path+'/logs/P1_'+job_ref+'.e\n')
 
     this_file_path = os.path.dirname(os.path.realpath(__file__))
     sh_file.write('python '+this_file_path+'/ExploratoryAnalysisJob.py '+dataset_path+" "+experiment_path+" "+str(cv_partitions)+" "+partition_method+" "+str(categorical_cutoff)+
