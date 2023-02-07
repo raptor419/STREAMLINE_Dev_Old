@@ -169,7 +169,7 @@ def submitClusterJob(dataset_path,experiment_path,cv_partitions,partition_method
     sh_file.write('#!/bin/bash\n')
     sh_file.write('#SBATCH -p '+queue+'\n')
     sh_file.write('#SBATCH --job-name='+job_ref+'\n')
-    sh_file.write('#SBATCH --mem='+str(reserved_memory)+'G'+'\n')
+    sh_file.write('#SBATCH --mem='+str(reserved_memory)+'G]"'+'\n')
     # sh_file.write('#BSUB -M '+str(maximum_memory)+'GB'+'\n')
     sh_file.write('#SBATCH -o ' + experiment_path+'/logs/P1_'+job_ref+'.o\n')
     sh_file.write('#SBATCH -e ' + experiment_path+'/logs/P1_'+job_ref+'.e\n')
@@ -178,7 +178,7 @@ def submitClusterJob(dataset_path,experiment_path,cv_partitions,partition_method
     sh_file.write('python '+this_file_path+'/ExploratoryAnalysisJob.py '+dataset_path+" "+experiment_path+" "+str(cv_partitions)+" "+partition_method+" "+str(categorical_cutoff)+
                   " "+export_feature_correlations+" "+export_univariate_plots+" "+class_label+" "+instance_label+" "+match_label+" "+str(random_state)+" "+str(ignore_features_path)+" "+str(categorical_feature_path)+" "+str(sig_cutoff)+" "+str(jupyterRun)+'\n')
     sh_file.close()
-    os.system('bsub < '+job_name)
+    os.system('sbatch '+job_name)
     pass
 
 if __name__ == '__main__':

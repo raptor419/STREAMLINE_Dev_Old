@@ -76,7 +76,7 @@ def submitClusterJob(experiment_path,reserved_memory,maximum_memory,queue,sig_cu
     sh_file.write('#!/bin/bash\n')
     sh_file.write('#SBATCH -p '+queue+'\n')
     sh_file.write('#SBATCH --job-name='+job_ref+'\n')
-    sh_file.write('#SBATCH --mem='+str(reserved_memory)+'G'+'\n')
+    sh_file.write('#SBATCH --mem='+str(reserved_memory)+'G]"'+'\n')
     # sh_file.write('#BSUB -M '+str(maximum_memory)+'GB'+'\n')
     sh_file.write('#SBATCH -o ' + experiment_path+'/logs/P7_'+job_ref+'.o\n')
     sh_file.write('#SBATCH -e ' + experiment_path+'/logs/P7_'+job_ref+'.e\n')
@@ -84,7 +84,7 @@ def submitClusterJob(experiment_path,reserved_memory,maximum_memory,queue,sig_cu
     this_file_path = os.path.dirname(os.path.realpath(__file__))
     sh_file.write('python ' + this_file_path + '/DataCompareJob.py ' + experiment_path +" "+ str(sig_cutoff)+" "+ str(jupyterRun)+ '\n')
     sh_file.close()
-    os.system('bsub < ' + job_name)
+    os.system('sbatch ' + job_name)
     pass
 
 if __name__ == '__main__':

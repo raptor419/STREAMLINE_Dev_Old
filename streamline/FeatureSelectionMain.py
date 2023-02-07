@@ -132,7 +132,7 @@ def submitClusterJob(full_path,experiment_path,do_mutual_info,do_multisurf,max_f
     sh_file.write('#!/bin/bash\n')
     sh_file.write('#SBATCH -p '+queue+'\n')
     sh_file.write('#SBATCH --job-name='+job_ref+'\n')
-    sh_file.write('#SBATCH --mem='+str(reserved_memory)+'G'+'\n')
+    sh_file.write('#SBATCH --mem='+str(reserved_memory)+'G]"'+'\n')
     # sh_file.write('#BSUB -M '+str(maximum_memory)+'GB'+'\n')
     sh_file.write('#SBATCH -o ' + experiment_path+'/logs/P4_'+job_ref+'.o\n')
     sh_file.write('#SBATCH -e ' + experiment_path+'/logs/P4_'+job_ref+'.e\n')
@@ -141,7 +141,7 @@ def submitClusterJob(full_path,experiment_path,do_mutual_info,do_multisurf,max_f
     sh_file.write('python '+this_file_path+'/FeatureSelectionJob.py '+full_path+" "+do_mutual_info+" "+do_multisurf+" "+
                   str(max_features_to_keep)+" "+filter_poor_features+" "+str(top_features)+" "+export_scores+" "+class_label+" "+instance_label+" "+str(cv_partitions)+" "+overwrite_cv+" "+jupyterRun+'\n')
     sh_file.close()
-    os.system('bsub < ' + job_name)
+    os.system('sbatch ' + job_name)
     pass
 
 if __name__ == '__main__':

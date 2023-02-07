@@ -151,7 +151,7 @@ def submitClusterJob(full_path,plot_ROC,plot_PRC,plot_FI_box,class_label,instanc
     sh_file.write('#!/bin/bash\n')
     sh_file.write('#SBATCH -p '+queue+'\n')
     sh_file.write('#SBATCH --job-name='+job_ref+'\n')
-    sh_file.write('#SBATCH --mem='+str(reserved_memory)+'G'+'\n')
+    sh_file.write('#SBATCH --mem='+str(reserved_memory)+'G]"'+'\n')
     # sh_file.write('#BSUB -M '+str(maximum_memory)+'GB'+'\n')
     sh_file.write('#SBATCH -o ' + experiment_path+'/logs/P6_'+job_ref+'.o\n')
     sh_file.write('#SBATCH -e ' + experiment_path+'/logs/P6_'+job_ref+'.e\n')
@@ -159,7 +159,7 @@ def submitClusterJob(full_path,plot_ROC,plot_PRC,plot_FI_box,class_label,instanc
     this_file_path = os.path.dirname(os.path.realpath(__file__))
     sh_file.write('python '+this_file_path+'/StatsJob.py '+full_path+" "+plot_ROC+" "+plot_PRC+" "+plot_FI_box+" "+class_label+" "+instance_label+" "+str(cv_partitions)+" "+scale_data+" "+str(plot_metric_boxplots)+" "+str(primary_metric)+" "+str(top_model_features)+" "+str(sig_cutoff)+" "+str(metric_weight)+" "+str(jupyterRun)+'\n')
     sh_file.close()
-    os.system('bsub < ' + job_name)
+    os.system('sbatch ' + job_name)
     pass
 
 if __name__ == '__main__':
