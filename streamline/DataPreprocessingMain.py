@@ -75,6 +75,11 @@ def main(argv):
 
         for dataset_directory_path in dataset_paths:
             full_path = options.output_path+"/"+options.experiment_name+"/"+dataset_directory_path
+
+            # Create folder to store scaling and imputing files
+            if not os.path.exists(full_path + '/scale_impute'):
+                os.mkdir(full_path + '/scale_impute')
+
             for cv_train_path in glob.glob(full_path+"/CVDatasets/*Train.csv"):
                 job_counter += 1
                 cv_test_path = cv_train_path.replace("Train.csv","Test.csv")
