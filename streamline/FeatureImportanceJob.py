@@ -103,8 +103,8 @@ def runMultiSURF(dataFeatures,dataOutcome,instance_subset,experiment_path,datase
 def pickleScores(experiment_path,dataset_name,outname,scores,scoreDict,score_sorted_features,cvCount):
     """ Pickle the scores, score dicitonary and features sorted by score to be used primarily in phase 4 (feature selection) of pipeline"""
     #Save Scores to pickled file for later use
-    if not os.path.exists(experiment_path + '/' + dataset_name + "/feature_selection/"+outname+"/pickledForPhase4"):
-        os.mkdir(experiment_path + '/' + dataset_name + "/feature_selection/"+outname+"/pickledForPhase4")
+    # if not os.path.exists(experiment_path + '/' + dataset_name + "/feature_selection/"+outname+"/pickledForPhase4"):
+    #     os.mkdir(experiment_path + '/' + dataset_name + "/feature_selection/"+outname+"/pickledForPhase4")
     outfile = open(experiment_path + '/' + dataset_name + "/feature_selection/"+outname+"/pickledForPhase4/"+str(cvCount)+'.pickle','wb')
     pickle.dump([scores,scoreDict,score_sorted_features],outfile)
     outfile.close()
