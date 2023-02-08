@@ -601,7 +601,7 @@ Run parameters for `ExploratoryAnalysisMain.py`:
 | --export-up | export univariate analysis plots (note: univariate analysis still output by default) | False |
 | --rand-state | "Dont Panic" - sets a specific random seed for largely reproducible results | 42 |
 | --run-parallel | if run parallel on LSF compatible computing cluster | True |
-| --queue | specify name of parallel computing queue (uses our research groups queue by default) | i2c2_normal |
+| --queue | specify name of parallel computing queue (uses our research groups queue by default) | defq |
 | --res-mem | reserved memory for the job (in Gigabytes) | 4 |
 | --max-mem | maximum memory before the job is automatically terminated | 15 |
 | -c | Boolean: Specify whether to check for existence of all output files | Stores False |
@@ -636,7 +636,7 @@ Run parameters for `DataPreprocessingMain.py`:
 | --multi-impute | applies multivariate imputation to quantitative features, otherwise uses median imputation | True |
 | --over-cv | overwrites earlier cv datasets with new scaled/imputed ones | True |
 | --run-parallel | if run parallel on LSF compatible computing cluster | True |
-| --queue | specify name of parallel computing queue (uses our research groups queue by default) | i2c2_normal |
+| --queue | specify name of parallel computing queue (uses our research groups queue by default) | defq |
 | --res-mem | reserved memory for the job (in Gigabytes) | 4 |
 | --max-mem | maximum memory before the job is automatically terminated | 15 |
 | -c | Boolean: Specify whether to check for existence of all output files | Stores False |
@@ -655,7 +655,7 @@ Run parameters for `FeatureImportanceMain.py`:
 | --n-jobs | number of cores dedicated to running algorithm; setting to -1 will use all available cores | 1 |
 | --inst-sub | sample subset size to use with multiSURF | 2000 |
 | --run-parallel | if run parallel on LSF compatible computing cluster | True |
-| --queue | specify name of parallel computing queue (uses our research groups queue by default) | i2c2_normal |
+| --queue | specify name of parallel computing queue (uses our research groups queue by default) | defq |
 | --res-mem | reserved memory for the job (in Gigabytes) | 4 |
 | --max-mem | maximum memory before the job is automatically terminated | 15 |
 | -c | Boolean: Specify whether to check for existence of all output files | Stores False |
@@ -673,7 +673,7 @@ Run parameters for `FeatureSelectionMain.py`:
 | --export-scores | export figure summarizing average feature importance scores over cv partitions | True |
 | --over-cv | overwrites working cv datasets with new feature subset datasets | True |
 | --run-parallel | if run parallel on LSF compatible computing cluster | True |
-| --queue | specify name of parallel computing queue (uses our research groups queue by default) | i2c2_normal |
+| --queue | specify name of parallel computing queue (uses our research groups queue by default) | defq |
 | --res-mem | reserved memory for the job (in Gigabytes) | 4 |
 | --max-mem | maximum memory before the job is automatically terminated | 15 |
 | -c | Boolean: Specify whether to check for existence of all output files | Stores False |
@@ -713,7 +713,7 @@ Run parameters for `ModelMain.py`:
 | --N | fixed LCS rule population maximum size param | 2000 |
 | --lcs-timeout | seconds until hyperparameter sweep stops for LCS algorithms | 1200 |
 | --run-parallel | if run parallel on LSF compatible computing cluster | True |
-| --queue | specify name of parallel computing queue (uses our research groups queue by default) | i2c2_normal |
+| --queue | specify name of parallel computing queue (uses our research groups queue by default) | defq |
 | --res-mem | reserved memory for the job (in Gigabytes) | 4 |
 | --max-mem | maximum memory before the job is automatically terminated | 15 |
 | -c | Boolean: Specify whether to check for existence of all output files | Stores False |
@@ -758,7 +758,7 @@ Run parameters for `StatsMain.py`:
 | --top-features| Number of top features to illustrate in figures | 20 |
 | --model-viz| Directly visualize either DT or GP models if trained | True |
 | --run-parallel | if run parallel on LSF compatible computing cluster | True |
-| --queue | specify name of parallel computing queue (uses our research groups queue by default) | i2c2_normal |
+| --queue | specify name of parallel computing queue (uses our research groups queue by default) | defq |
 | --res-mem | reserved memory for the job (in Gigabytes) | 4 |
 | --max-mem | maximum memory before the job is automatically terminated | 15 |
 | -c | Boolean: Specify whether to check for existence of all output files | Stores False |
@@ -771,7 +771,7 @@ Run parameters for `DataCompareMain.py`:
 | --out-path | path to output directory | MANDATORY |
 | --exp-name | name of experiment output folder (no spaces) | MANDATORY |
 | --run-parallel | if run parallel on LSF compatible computing cluster | True |
-| --queue | specify name of parallel computing queue (uses our research groups queue by default) | i2c2_normal |
+| --queue | specify name of parallel computing queue (uses our research groups queue by default) | defq |
 | --res-mem | reserved memory for the job (in Gigabytes) | 4 |
 | --max-mem | maximum memory before the job is automatically terminated | 15 |
 | -c | Boolean: Specify whether to check for existence of all output files | Stores False |
@@ -785,7 +785,7 @@ Run parameters for `PDF_ReportMain.py`:
 | --out-path | path to output directory | MANDATORY |
 | --exp-name | name of experiment output folder (no spaces) | MANDATORY |
 | --run-parallel | if run parallel on LSF compatible computing cluster | True |
-| --queue | specify name of parallel computing queue (uses our research groups queue by default) | i2c2_normal |
+| --queue | specify name of parallel computing queue (uses our research groups queue by default) | defq |
 | --res-mem | reserved memory for the job (in Gigabytes) | 4 |
 | --max-mem | maximum memory before the job is automatically terminated | 15 |
 | -c | Boolean: Specify whether to check for existence of all output files | Stores False |
@@ -805,7 +805,7 @@ Run parameters for `ApplyModelMain.py`:
 | --plot-box | Plot box plot summaries comparing algorithms for each metric | True |
 | --match-label | applies if original training data included column with matched instance ids | None |
 | --run-parallel | if run parallel on LSF compatible computing cluster | True |
-| --queue | specify name of parallel computing queue (uses our research groups queue by default) | i2c2_normal |
+| --queue | specify name of parallel computing queue (uses our research groups queue by default) | defq |
 | --res-mem | reserved memory for the job (in Gigabytes) | 4 |
 | --max-mem | maximum memory before the job is automatically terminated | 15 |
 | -c | Boolean: Specify whether to check for existence of all output files | Stores False |
@@ -822,7 +822,7 @@ Run parameters for `PDF_ReportMain.py`:
 | --rep-path | path to directory containing replication or hold-out testing datasets (must have at least all features with same labels as in original training dataset) | MANDATORY |
 | --dataset | path to target original training dataset | MANDATORY |
 | --run-parallel | if run parallel on LSF compatible computing cluster | True |
-| --queue | specify name of parallel computing queue (uses our research groups queue by default) | i2c2_normal |
+| --queue | specify name of parallel computing queue (uses our research groups queue by default) | defq |
 | --res-mem | reserved memory for the job (in Gigabytes) | 4 |
 | --max-mem | maximum memory before the job is automatically terminated | 15 |
 | -c | Boolean: Specify whether to check for existence of all output files | Stores False |
