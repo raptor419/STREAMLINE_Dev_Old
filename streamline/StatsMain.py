@@ -151,7 +151,7 @@ def submitClusterJob(full_path,plot_ROC,plot_PRC,plot_FI_box,class_label,instanc
     sh_file.write('#!/bin/bash\n')
     sh_file.write('#SBATCH -p '+queue+'\n')
     sh_file.write('#SBATCH --job-name='+job_ref+'\n')
-    sh_file.write('#SBATCH --mem='+str(reserved_memory)+'G]"'+'\n')
+    sh_file.write('#SBATCH --mem='+str(reserved_memory)+'G'+'\n')
     # sh_file.write('#BSUB -M '+str(maximum_memory)+'GB'+'\n')
     sh_file.write('#SBATCH -o ' + experiment_path+'/logs/P6_'+job_ref+'.o\n')
     sh_file.write('#SBATCH -e ' + experiment_path+'/logs/P6_'+job_ref+'.e\n')

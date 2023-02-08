@@ -306,7 +306,7 @@ def submitClusterJob(algNoSpace,train_file_path,test_file_path,full_path,n_trial
     sh_file.write('#!/bin/bash\n')
     sh_file.write('#SBATCH -p '+queue+'\n')
     sh_file.write('#SBATCH --job-name='+job_ref+'\n')
-    sh_file.write('#SBATCH --mem='+str(reserved_memory)+'G]"'+'\n')
+    sh_file.write('#SBATCH --mem='+str(reserved_memory)+'G'+'\n')
     # sh_file.write('#BSUB -M '+str(maximum_memory)+'GB'+'\n')
     sh_file.write('#SBATCH -o ' + experiment_path+'/logs/P5_'+str(algAbrev)+'_'+str(cvCount)+'_'+job_ref+'.o\n')
     sh_file.write('#SBATCH -e ' + experiment_path+'/logs/P5_'+str(algAbrev)+'_'+str(cvCount)+'_'+job_ref+'.e\n')
