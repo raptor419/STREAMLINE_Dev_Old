@@ -85,10 +85,8 @@ def main(argv):
             if eval(options.do_mutual_info):
                 if not os.path.exists(full_path+"/feature_selection/mutualinformation"):
                     os.mkdir(full_path+"/feature_selection/mutualinformation")
-                if not os.path.exists(full_path + dataset_directory_path +
-                                      "/feature_selection/mutualinformation/pickledForPhase4"):
-                    os.mkdir(full_path + '/' + dataset_directory_path
-                             + "/feature_selection/mutualinformation/pickledForPhase4")
+                if not os.path.exists(full_path + "/feature_selection/mutualinformation/pickledForPhase4"):
+                    os.mkdir(full_path + "/feature_selection/mutualinformation/pickledForPhase4")
                 for cv_train_path in glob.glob(full_path+"/CVDatasets/*_CV_*Train.csv"):
                     command_text = '/FeatureImportanceJob.py ' + cv_train_path+" "+experiment_path+" "+str(random_state)+" "+class_label+" "+instance_label+" " +str(options.instance_subset)+" mi "+str(options.n_jobs)+' '+str(options.use_TURF)+' '+str(options.TURF_pct)
                     job_counter += 1
@@ -101,12 +99,8 @@ def main(argv):
             if eval(options.do_multisurf):
                 if not os.path.exists(full_path+"/feature_selection/multisurf"):
                     os.mkdir(full_path+"/feature_selection/multisurf")
-
-                if not os.path.exists(full_path + dataset_directory_path +
-                                      "/feature_selection/multisurf/pickledForPhase4"):
-                    os.mkdir(full_path + '/' + dataset_directory_path
-                             + "/feature_selection/multisurf/pickledForPhase4")
-
+                if not os.path.exists(full_path + "/feature_selection/multisurf/pickledForPhase4"):
+                    os.mkdir(full_path + "/feature_selection/multisurf/pickledForPhase4")
                 for cv_train_path in glob.glob(full_path+"/CVDatasets/*_CV_*Train.csv"):
                     command_text = '/FeatureImportanceJob.py ' + cv_train_path+" "+experiment_path+" "+str(random_state)+" "+class_label+" "+instance_label+" " +str(options.instance_subset)+" ms "+str(options.n_jobs)+' '+str(options.use_TURF)+' '+str(options.TURF_pct)
                     if eval(options.run_parallel):
