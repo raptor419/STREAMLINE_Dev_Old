@@ -143,7 +143,7 @@ def submitClusterJob(cv_train_path,cv_test_path,experiment_path,scale_data,imput
     sh_file.write('#SBATCH -e ' + experiment_path+'/logs/P2_'+job_ref+'.e\n')
 
     this_file_path = os.path.dirname(os.path.realpath(__file__))
-    sh_file.write('python '+this_file_path+'/DataPreprocessingJob.py '+cv_train_path+" "+cv_test_path+" "+experiment_path+" "+scale_data+
+    sh_file.write('srun python '+this_file_path+'/DataPreprocessingJob.py '+cv_train_path+" "+cv_test_path+" "+experiment_path+" "+scale_data+
                   " "+impute_data+" "+overwrite_cv+" "+str(categorical_cutoff)+" "+class_label+" "+instance_label+" "+str(random_state)+" "+str(multi_impute)+" "+str(jupyterRun)+'\n')
     sh_file.close()
     os.system('sbatch '+job_name)

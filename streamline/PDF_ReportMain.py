@@ -96,7 +96,7 @@ def submitClusterJob(experiment_path,training,rep_data_path,dataset_for_rep,rese
     sh_file.write('#SBATCH -e ' + experiment_path+'/logs/PDF_'+job_ref+'.e\n')
 
     this_file_path = os.path.dirname(os.path.realpath(__file__))
-    sh_file.write('python ' + this_file_path + '/PDF_ReportJob.py ' + experiment_path+' '+training+' '+rep_data_path+' '+dataset_for_rep + '\n')
+    sh_file.write('srun python ' + this_file_path + '/PDF_ReportJob.py ' + experiment_path+' '+training+' '+rep_data_path+' '+dataset_for_rep + '\n')
     sh_file.close()
     os.system('sbatch ' + job_name)
     pass

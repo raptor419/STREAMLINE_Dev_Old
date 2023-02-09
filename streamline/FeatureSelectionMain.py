@@ -138,7 +138,7 @@ def submitClusterJob(full_path,experiment_path,do_mutual_info,do_multisurf,max_f
     sh_file.write('#SBATCH -e ' + experiment_path+'/logs/P4_'+job_ref+'.e\n')
 
     this_file_path = os.path.dirname(os.path.realpath(__file__))
-    sh_file.write('python '+this_file_path+'/FeatureSelectionJob.py '+full_path+" "+do_mutual_info+" "+do_multisurf+" "+
+    sh_file.write('srun python '+this_file_path+'/FeatureSelectionJob.py '+full_path+" "+do_mutual_info+" "+do_multisurf+" "+
                   str(max_features_to_keep)+" "+filter_poor_features+" "+str(top_features)+" "+export_scores+" "+class_label+" "+instance_label+" "+str(cv_partitions)+" "+overwrite_cv+" "+jupyterRun+'\n')
     sh_file.close()
     os.system('sbatch ' + job_name)

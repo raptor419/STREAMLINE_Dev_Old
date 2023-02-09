@@ -82,7 +82,7 @@ def submitClusterJob(experiment_path,reserved_memory,maximum_memory,queue,sig_cu
     sh_file.write('#SBATCH -e ' + experiment_path+'/logs/P7_'+job_ref+'.e\n')
 
     this_file_path = os.path.dirname(os.path.realpath(__file__))
-    sh_file.write('python ' + this_file_path + '/DataCompareJob.py ' + experiment_path +" "+ str(sig_cutoff)+" "+ str(jupyterRun)+ '\n')
+    sh_file.write('srun python ' + this_file_path + '/DataCompareJob.py ' + experiment_path +" "+ str(sig_cutoff)+" "+ str(jupyterRun)+ '\n')
     sh_file.close()
     os.system('sbatch ' + job_name)
     pass

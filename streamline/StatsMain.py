@@ -157,7 +157,7 @@ def submitClusterJob(full_path,plot_ROC,plot_PRC,plot_FI_box,class_label,instanc
     sh_file.write('#SBATCH -e ' + experiment_path+'/logs/P6_'+job_ref+'.e\n')
 
     this_file_path = os.path.dirname(os.path.realpath(__file__))
-    sh_file.write('python '+this_file_path+'/StatsJob.py '+full_path+" "+plot_ROC+" "+plot_PRC+" "+plot_FI_box+" "+class_label+" "+instance_label+" "+str(cv_partitions)+" "+scale_data+" "+str(plot_metric_boxplots)+" "+str(primary_metric)+" "+str(top_model_features)+" "+str(sig_cutoff)+" "+str(metric_weight)+" "+str(jupyterRun)+'\n')
+    sh_file.write('srun python '+this_file_path+'/StatsJob.py '+full_path+" "+plot_ROC+" "+plot_PRC+" "+plot_FI_box+" "+class_label+" "+instance_label+" "+str(cv_partitions)+" "+scale_data+" "+str(plot_metric_boxplots)+" "+str(primary_metric)+" "+str(top_model_features)+" "+str(sig_cutoff)+" "+str(metric_weight)+" "+str(jupyterRun)+'\n')
     sh_file.close()
     os.system('sbatch ' + job_name)
     pass

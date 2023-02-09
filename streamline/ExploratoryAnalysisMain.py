@@ -175,7 +175,7 @@ def submitClusterJob(dataset_path,experiment_path,cv_partitions,partition_method
     sh_file.write('#SBATCH -e ' + experiment_path+'/logs/P1_'+job_ref+'.e\n')
 
     this_file_path = os.path.dirname(os.path.realpath(__file__))
-    sh_file.write('python '+this_file_path+'/ExploratoryAnalysisJob.py '+dataset_path+" "+experiment_path+" "+str(cv_partitions)+" "+partition_method+" "+str(categorical_cutoff)+
+    sh_file.write('srun python '+this_file_path+'/ExploratoryAnalysisJob.py '+dataset_path+" "+experiment_path+" "+str(cv_partitions)+" "+partition_method+" "+str(categorical_cutoff)+
                   " "+export_feature_correlations+" "+export_univariate_plots+" "+class_label+" "+instance_label+" "+match_label+" "+str(random_state)+" "+str(ignore_features_path)+" "+str(categorical_feature_path)+" "+str(sig_cutoff)+" "+str(jupyterRun)+'\n')
     sh_file.close()
     os.system('sbatch '+job_name)
