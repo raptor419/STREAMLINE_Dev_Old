@@ -1,0 +1,9 @@
+python ExploratoryAnalysisMain.py --data-path /home/bandheyh/common/STREAMLINE/experiments/datasets/OSA --out-path /home/bandheyh/common/STREAMLINE/experiments/output --exp-name OSA_SAGIC_Paper --inst-label subnum --class-label class --export-up True
+python DataPreprocessingMain.py --out-path /home/bandheyh/common/STREAMLINE/experiments/output --exp-name OSA_SAGIC_Paper
+python FeatureImportanceMain.py --out-path /home/bandheyh/common/STREAMLINE/experiments/output --exp-name OSA_SAGIC_Paper
+python FeatureSelectionMain.py --out-path /home/bandheyh/common/STREAMLINE/experiments/output --exp-name OSA_SAGIC_Paper
+python ModelMain.py --out-path /home/bandheyh/common/STREAMLINE/experiments/output --exp-name OSA_SAGIC_Paper  --iter 500000 --export-hyper-sweep True -c
+python StatsMain.py --out-path /home/bandheyh/common/STREAMLINE/experiments/output --exp-name OSA_SAGIC_Paper
+python DataCompareMain.py --out-path /home/bandheyh/common/STREAMLINE/experiments/output --exp-name OSA_SAGIC_Paper
+python PDF_ReportMain.py --out-path /home/bandheyh/common/STREAMLINE/experiments/output --exp-name OSA_SAGIC_Paper
+python FileCleanup.py --out-path /home/bandheyh/common/STREAMLINE/experiments/output --exp-name OSA_SAGIC_Paper
